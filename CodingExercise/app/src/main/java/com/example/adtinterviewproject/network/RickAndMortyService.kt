@@ -1,18 +1,25 @@
 package com.example.adtinterviewproject.network
 
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.example.adtinterviewproject.network.data.AllCharacterInfo
+import com.example.adtinterviewproject.network.data.Character
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Response
+import retrofit2.http.GET
+import retrofit2.http.Path
 
-class RickAndMortyService {
+interface RickAndMortyService {
 
-    companion object {
-        private val BASE_URL: String = "https://rickandmortyapi.com/api/"
+    @GET("character")
+    fun getCharacters(): Call<AllCharacterInfo>
 
+    @GET("character/?page={pageNumber}")
+    fun getCharactersPage(
+        @Path("pageNumber") pageNumber: Int
+    ): Call<JSONObject>
 
-        fun getRetrofit() = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
+    @GET("character/{id}")
+    fun getCharacter(
+        @Path("id") id: Int
+    ): Call<Character>
 }

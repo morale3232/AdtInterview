@@ -1,6 +1,6 @@
 package com.example.adtinterviewproject.network.data
 
-data class Result(
+data class Character(
     val created: String,
     val episode: List<String>,
     val gender: String,

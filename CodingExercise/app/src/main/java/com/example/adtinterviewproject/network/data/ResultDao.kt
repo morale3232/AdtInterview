@@ -8,6 +8,6 @@ import androidx.room.Query
 interface ResultDao {
 
     @Query("SELECT *")
-    fun getAll(): DataSource.Factory<Int, Result>
+    fun getAll(): DataSource.Factory<Int, Character>
 
 }
